@@ -35,7 +35,7 @@ For typical examples, see the following.
 - Three OCR samples
     - input [ToC of Conway's book](/sample/FA/)
         - [its output](/out/FA.txt)
-    - input [ToC of karatzas shreve book](/sample/BMSC.pdf)
+    - input [ToC of Karatzas and Shreve's book](/sample/BMSC.pdf)
         - [its output](/out/BMSC.txt)
     - input [ToC of Hungerford's book](/sample/Algebra/)
         - [its output](/out/Algebra.txt)
