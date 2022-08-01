@@ -1,12 +1,13 @@
 {
 	"folders": [
 		{
-			"name": "toc-ocr",
+			"name": "ocr-toc-tesseract",
 			"path": "."
 		}
 	],
 	"settings": {
 		"python.languageServer": "Pylance",
-		"editor.detectIndentation": false
+		"editor.detectIndentation": false,
+		"python.formatting.blackPath": "${workspaceFolder}/.venv/bin/black"
 	}
 }

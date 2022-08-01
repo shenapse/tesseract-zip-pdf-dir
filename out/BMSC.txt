@@ -1,0 +1,180 @@
+Contents
+Preface vii
+Suggestions for the Reader xvii
+Interdependence of the Chapters xix
+Frequently Used Notation xxi
+CHAPTER 1
+Martingales, Stopping Times, and Filtrations 1
+1.1. Stochastic Processes and o-Fields 1
+1.2. Stopping Times 6
+1.3. Continuous-Time Martingales il
+A. Fundamental inequalities 12
+B. Convergence results 17
+C. The optional sampling theorem 19
+1.4. The Doob-Meyer Decomposition 21
+1.5. Continuous, Square-Integrable Martingales 30
+1.6. Solutions to Selected Problems 38
+1.7. Notes 45
+CHAPTER 2
+Brownian Motion 47
+2.1. Introduction 47
+2.2. First Construction of Brownian Motion 49
+A. The consistency theorem 49
+B. The Kolmogorov—Centsov theorem 53
+2.3. Second Construction of Brownian Motion 56
+2.4. The Space C[0, 00), Weak Convergence, and Wiener Measure 59
+‘A. Weak convergence 60
+xii Contents
+B. Tightness 61
+C. Convergence of finite-dimensional distributions 64
+D. The invariance principle and the Wiener measure 66
+2.5. The Markov Property 7
+A. Brownian motion in several dimensions 7T2
+B. Markov processes and Markov families 74
+C. Equivalent formulations of the Markov property 75
+2.6. The Strong Markov Property and the Reflection Principle 719
+A. The reflection principle 719
+B. Strong Markov processes and families 81
+C. The strong Markov property for Brownian motion 84
+2.7. Brownian Filtrations 89
+A. Right-continuity of the augmented filtration for a
+strong Markov process 90
+B. A “universal” filtration 93
+C. The Blumenthal zero-one law 94
+2.8. Computations Based on Passage Times 94
+A. Brownian motion and its running maximum 95
+B. Brownian motion on a half-line 97
+C. Brownian motion on a finite interval 97
+D. Distributions involving last exit times 100
+2.9. The Brownian Sample Paths 103
+A. Elementary properties 103
+B. The zero set and the quadratic variation 104
+C. Local maxima and points of increase 106
+D. Nowhere differentiability 109
+E. Law of the iterated logarithm 111
+F. Modulus of continuity 114
+2.10. Solutions to Selected Problems 116
+2.11. Notes 126
+CHAPTER 3
+Stochastic Integration 128
+3.1. Introduction 128
+3.2. Construction of the Stochastic Integral 129
+A. Simple processes and approximations 132
+B. Construction and elementary properties of the integral 137
+C. A characterization of the integral 141
+D. Integration with respect to continuous, local martingales 145
+3.3. The Change-of-Variable Formula 148
+A. The Ité rule 149
+B. Martingale characterization of Brownian motion 156
+C. Bessel processes, questions of recurrence 158
+D. Martingale moment inequalities 163
+E. Supplementary exercises 167
+3.4. Representations of Continuous Martingales in Terms of
+Brownian Motion 169
+A. Continuous local martingales as stochastic integrals with
+respect to Brownian motion 170
+Contents xiii
+B. Continuous local martingales as time-changed Brownian motions 173
+C. A theorem of F. B. Knight 179
+D. Brownian martingales as stochastic integrals 180
+E. Brownian functionals as stochastic integrals 185
+3.5. The Girsanov Theorem 190
+A. The basic result 191
+B. Proof and ramifications 193
+C. Brownian motion with drift 196
+D. The Novikov condition 198
+3.6. Local Time and a Generalized Ité Rule for Brownian Motion 201
+A. Definition of local time and the Tanaka formula 203
+B. The Trotter existence theorem 206
+C. Reflected Brownian motion and the Skorohod equation 210
+D. A generalized It6 rule for convex functions 212
+E. The Engelbert-Schmidt zero-one law 215
+3.7. Local Time for Continuous Semimartingales 217
+3.8. Solutions to Selected Problems 226
+3.9. Notes 236
+CHAPTER 4
+Brownian Motion and Partial Differential Equations 239
+4.1. Introduction 239
+4.2. Harmonic Functions and the Dirichlet Problem 240
+A. The mean-value property 241
+B. The Dirichlet problem 243
+C. Conditions for regularity 247
+D. Integral formulas of Poisson 251
+E. Supplementary exercises 253
+4.3. The One-Dimensional Heat Equation 254
+A. The Tychonoff uniqueness theorem 255
+B. Nonnegative solutions of the heat equation 256
+C. Boundary crossing probabilities for Brownian motion 262
+D. Mixed initial/boundary value problems 265
+4.4. The Formulas of Feynman and Kac 267
+A. The multidimensional formula 268
+B. The one-dimensional formula 271
+4.5. Solutions to selected problems 276
+4.6. Notes 278
+CHAPTER 5
+Stochastic Differential Equations 281
+5.1. Introduction 281
+5.2. Strong Solutions 284
+A. Definitions 285
+B. The Ité theory 286
+C. Comparison results and other refinements 291
+D. Approximations of stochastic differential equations 295
+E. Supplementary exercises 299
+xiv Contents
+5.3. Weak Solutions 300
+A. Two notions of uniqueness 301
+B. Weak solutions by means of the Girsanov theorem 302
+C. A digression on regular conditional probabilities 306
+D. Results of Yamada and Watanabe on weak and strong solutions 308
+5.4. The Martingale Problem of Stroock and Varadhan 311
+‘A. Some fundamental martingales 312
+B. Weak solutions and martingale problems 314
+C. Well-posedness and the strong Markov property 319
+D. Questions of existence 323
+E. Questions of uniqueness 325,
+F. Supplementary exercises 328
+5.5. A Study of the One-Dimensional Case 329
+A. The method of time change 330
+B. The method of removal of drift 339
+C. Feller’s test for explosions 342
+D. Supplementary exercises 351
+5.6. Linear Equations 354
+A. Gauss—Markov processes 355
+B. Brownian bridge 358
+C. The general, one-dimensional, linear equation 360
+D. Supplementary exercises 361
+5.7. Connections with Partial Differential Equations 363
+A. The Dirichlet problem 364
+B. The Cauchy problem and a Feynman-Kac representation 366
+C. Supplementary exercises 369
+5.8. Applications to Economics 371
+A. Portfolio and consumption processes 371
+B. Option pricing 376
+C. Optimal consumption and investment (general theory) 379
+D. Optimal consumption and investment (constant coefficients) 381
+5.9. Solutions to Selected Problems 387
+5.10. Notes 394
+CHAPTER 6
+P. Lévy’s Theory of Brownian Local Time 399
+6.1. Introduction 399
+6.2. Alternate Representations of Brownian Local Time 400
+A. The process of passage times 400
+B. Poisson random measures 403
+C. Subordinators 405
+D. The process of passage times revisited 411
+E. The excursion and downcrossing representations of local time 414
+6.3. Two Independent Reflected Brownian Motions 418
+A. The positive and negative parts of a Brownian motion 418
+B. The first formula of D. Williams 421
+C. The joint density of (W(t), L(),T.(0) 423
+Contents xv
+6.4. Elastic Brownian Motion 425
+A. The Feynman-Kac formulas for elastic Brownian motion 426
+B. The Ray—Knight description of local time 430
+C. The second formula of D. Williams 434
+6.5. An Application: Transition Probabilities of Brownian Motion with
+Two-Valued Drift 437
+6.6. Solutions to Selected Problems 442
+6.7. Notes 445
+Bibliography 447
+Index 459

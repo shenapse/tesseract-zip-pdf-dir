@@ -28,9 +28,6 @@ class File:
         self.__ext: str = File.NOT_SET
         self.__is_temp: bool = False
 
-    def __del__(self) -> None:
-        self.on_exit(remove_root=True)
-
     @property
     def root(self) -> Path:
         return self.__root
@@ -74,10 +71,7 @@ class File:
         Use ONLY WHEN you need to scan image files, not pdf or zip."""
         assert dir.is_dir()
         if ext not in self.img_ext:
-            msg = (
-                "Can't read non-image files by specifying directory.\n"
-                + f"dir={dir.resolve()}\next={ext}"
-            )
+            msg = "Can't read non-image files by specifying directory.\n" + f"dir={dir.resolve()}\next={ext}"
             raise ValueError(msg)
         self.__ext = ext
         self.__root = dir
@@ -92,9 +86,6 @@ class File:
 
     def is_set(self) -> bool:
         return self.__ext != File.NOT_SET
-
-    def set_as_temp(self) -> None:
-        self.__is_temp = True
 
     def print(self):
         """print information of self."""
@@ -126,11 +117,7 @@ class File:
         if self.is_img_file():
             return ps
         elif self.is_pdf_file():
-            return list(
-                itertools.chain.from_iterable(
-                    [list(itertools.repeat(p, self.n_pages(p))) for p in ps]
-                )
-            )
+            return list(itertools.chain.from_iterable([list(itertools.repeat(p, self.n_pages(p))) for p in ps]))
         else:
             raise ValueError(f"{self.__class__}.ext = {self.ext} unexpected.")
 
@@ -141,50 +128,7 @@ class File:
 
     def n_pages(self, path: Path) -> int:
         assert not self.is_compressed_file()
-        return (
-            1
-            if self.__get_ext(path) in File.__img_ext
-            else PdfFileReader(path).getNumPages()
-        )
+        return 1 if self.__get_ext(path) in File.__img_ext else PdfFileReader(path).getNumPages()
 
     def get_total_pages(self) -> int:
         return sum([self.n_pages(p) for p in self.paths])
-
-    def remove_files(self, path_except: Paths = []) -> None:
-        for path in self.paths:
-            if path not in path_except:
-                path.unlink()
-
-    def get_unzip_file(self, which: int = 0) -> File:
-        if not self.is_compressed_file():
-            raise Exception(f"No zip file found. File is {self.ext}.")
-        with zipfile.ZipFile(zip_file := str(self.paths[which])) as zf:
-            extract_dir: Path = self.root / "./temp_extract"
-            zf.extractall(str(extract_dir))
-            unzip_file: File = File()
-            for ext in self.img_ext:
-                unzip_file.read_dir(ext=ext, dir=extract_dir)
-                if not unzip_file.is_empty():
-                    unzip_file.set_as_temp()
-                    return unzip_file
-        raise Exception(f"No img file found in zip {zip_file}")
-
-    def on_exit(self, remove_root: bool = False) -> None:
-        """remove files in self.paths if self is named temporary.
-        Destructor automatically calls this method.
-        Call this manually when the directory is no longer needed,
-        """
-        if self.is_temp:
-            self.remove_files()
-            if remove_root:
-                self.root.rmdir()
-
-
-if __name__ == "__main__":
-
-    path = Path("./test/toc3.pdf")
-    dir: Path = Path("./test")
-    f = File()
-    f.read_dir(ext="pdf", dir=dir)
-    f.read_file(path)
-    f.print()

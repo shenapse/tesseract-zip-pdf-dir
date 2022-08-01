@@ -1,13 +1,13 @@
 # ignore .history directory that is created by vscode extension
 /.history
-/gac.json
 *.venv
 /scr/*
-!/scr/Rect.py
+/tests/*
+!/tests/test_ocr.py
 !/scr/Convertor.py
 !/scr/File.py
 !/scr/Type_Alias.py
-!/scr/OCR_by_google.py
 !/scr/main.py
+!/scr/OCR_by_tesseract.py
 !/scr/pdf/
 !/scr/out/

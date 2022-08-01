@@ -1,0 +1,36 @@
+Contents
+
+Preface vii
+Preface to the Second Edition xi
+
+CHAPTER I
+
+Hilbert Spaces
+
+§1. Elementary Properties and Examples 1
+§2. Orthogonality 7
+§3. The Riesz Representation Theorem 11
+§4. Orthonormal Sets of Vectors and Bases 14
+§5. Isomorphic Hilbert Spaces and the Fourier Transform for the Circle 19
+§6. The Direct Sum of Hilbert Spaces 23
+
+CHAPTER II
+
+Operators on Hilbert Space
+§1. Elementary Properties and Examples 26
+§2. The Adjoint of an Operator 31
+§3. Projections and Idempotents; Invariant and Reducing Subspaces 36
+§4. Compact Operators 41
+§5.* The Diagonalization of Compact Self-Adjoint Operators 46
+§6.* An Application: Sturm-Liouville Systems 49
+§7.* The Spectral Theorem and Functional Calculus for Compact Normal
+
+Operators 54
+
+§8.* Unitary Equivalence for Compact Normal Operators 60
+
+CHAPTER III
+
+Banach Spaces
+§1. Elementary Properties and Examples 63
+§2. Linear Operators on Normed Spaces 67

@@ -2,12 +2,12 @@ from typing import Optional
 
 from Convertor import Convertor
 from File import File
-from OCR_by_google import OCR
-from Type_Alias import Path, Paths
+from OCR_by_tesseract import OCR
+from Type_Alias import Path, PIL_Imgs, Save_Result
 
 
 # for preview
-def preview_files(file_or_dir: Path | str, ext: str = "pdf"):
+def preview_files(file_or_dir: Path | str, ext: str = "zip"):
     """preview information of files that will be read by ocr.
 
     Args:
@@ -16,12 +16,10 @@ def preview_files(file_or_dir: Path | str, ext: str = "pdf"):
         ext: file extension you intend.
         used only when you provide a directory path.
     """
-    get_file_obj(file_or_dir, ext, expand=False)[0].print()
+    get_file_obj(file_or_dir, ext).print()
 
 
-def get_file_obj(
-    file_or_dir: Path | str, ext: str = "pdf", expand: bool = True
-) -> tuple[File, File]:
+def get_file_obj(file_or_dir: Path | str, ext: str = "zip") -> File:
     """get file objects that holds the directory structure of intended path.
 
     Args:
@@ -29,17 +27,6 @@ def get_file_obj(
 
         ext: file extension you intend.
         used only when you provide a directory path.
-
-        expand: whether to expand zip or pdf file to individual img files
-        in a new directory and return the directory
-        as the second of the returned values.
-
-    Return:
-
-        1st: File object of the file_or_dir.
-
-        2nd: Equal to 1st unless expand is true and 1st contains zip or pdf.
-        Otherwise equal to a File object of the newly created directory.
     """
     path = Path(file_or_dir)
     if not path.exists():
@@ -50,37 +37,23 @@ def get_file_obj(
         f.read_file(path)
     else:
         f.read_dir(ext=ext, dir=path)
-    if not expand:
-        return f, f
-    # expand compressed file
-    else:
-        f_read: File = f
-        if f.is_compressed_file():
-            f_read = f.get_unzip_file()
-        elif f.is_pdf_file():
-            c = Convertor()
-            c.read_file(f)
-            f_read = c.save_pdf_pages()
-        return f, f_read
+    return f
 
 
-def get_text_from_imgs(img_paths: Paths) -> str:
+def get_text_from_imgs(ocr: OCR, imgs: PIL_Imgs) -> str:
     """concatenate all the read text of images."""
-    texts: list[str] = []
-    for img_path in img_paths:
-        ocr = OCR()
-        ocr.read_img(img_path=img_path)
-        texts.append(ocr.get_text())
+    texts: list[str] = [ocr.get_text(img) for img in imgs]
     return "\n".join(texts)
 
 
-def ocr_by_cloud_vision_api(
+def ocr_by_tesseract(
+    ocr: OCR,
     file_or_dir: Path | str,
     ext: str = "zip",
     dir_out: Optional[Path] = None,
     name_out: Optional[str] = None,
-) -> None:
-    """ocr by google cloud vision api.
+) -> Save_Result:
+    """ocr by tesseract.
 
     Args:
         file_or_dir: A path of file or directory.
@@ -97,15 +70,15 @@ def ocr_by_cloud_vision_api(
         in the directory if image files are provided.
         Note that the latter case could overwrite an output text file.
     """
-    f, f_read = get_file_obj(file_or_dir, ext)
-    ocr_text: str = get_text_from_imgs(f_read.paths)
-    # save text
-    text_path, success = save_text(
-        text=ocr_text, file=f, dir_out=dir_out, name_out=name_out
-    )
+    f = get_file_obj(file_or_dir, ext)
+    c = Convertor()
+    c.read_file(f)
+    ocr_text: str = get_text_from_imgs(ocr, c.imgs)
+    text_path, success = save_text(ocr_text, f, dir_out, name_out)
     if not success:
         msg = f"Error occurred while trying to save ocr text {text_path}"
         raise Exception(msg)
+    return text_path, success
 
 
 def save_text(
@@ -113,8 +86,10 @@ def save_text(
     file: File,
     dir_out: Optional[Path] = None,
     name_out: Optional[str] = None,
-) -> tuple[Path, bool]:
+) -> Save_Result:
     save_dir: Path = file.root if dir_out is None else dir_out
+    if not save_dir.exists():
+        save_dir.mkdir(parents=True)
     stem_name: str = f"{file.paths[0].stem}" if name_out is None else name_out
     text_path: Path = save_dir / f"{stem_name}.txt"
     with open(text_path, mode="w") as tf:
@@ -124,10 +99,12 @@ def save_text(
 
 if __name__ == "__main__":
     # preview files to read
-    file = "./sample/algebra"
-    preview_files(file_or_dir=file, ext="png")
-    dir_out: Path = Path("./out")
-    name_out = Path(file).name
-    ocr_by_cloud_vision_api(
-        file_or_dir=file, ext="png", dir_out=dir_out, name_out=name_out
-    )
+    file = "./sample/DMPM.zip"
+    preview_files(file_or_dir=file)
+
+    # file = "sample/"
+    # # preview_files(file_or_dir=file)
+    # dir_out: Path = Path("out")
+    # name_out = Path(file).name
+    # ocr = OCR(lang="eng", layout=6)
+    # ocr_by_tesseract(ocr, file_or_dir=file, ext="pdf", dir_out=dir_out, name_out=name_out)

@@ -1,0 +1,252 @@
+Some Frequently Used Notation xix
+CHAPTER I. BROWNIAN MOTION
+1, INTRODUCTION 1
+1. What is Brownian motion, and why study it? 1
+2. Brownian motion as a martingale 2
+3. Brownian motion as a Gaussian process 3
+4. Brownian motion as a Markov process 5
+5. Brownian motion as a diffusion (and martingale) 7
+2. BASICS ABOUT BROWNIAN MOTION 10
+6. Existence and uniqueness of Brownian motion 10
+7. Skorokhod embedding 13
+8. Donsker’s Invariance Principle 16
+9. Exponential martingales and first-passage distributions 18
+10. Some sample-path properties 19
+11. Quadratic variation 21
+12. The strong Markov property 21
+13. Reflection 25
+14. Reflecting Brownian motion and local time 27
+15. Kolmogorov’s test 31
+16. Brownian exponential martingales and the Law of the
+Iterated Logarithm 31
+3. BROWNIAN MOTION IN HIGHER DIMENSIONS 36
+17. Some martingales for Brownian motion 36
+18. Recurrence and transience in higher dimensions 38
+19. Some applications of Brownian motion to complex analysis 39
+20. Windings of planar Brownian motion 43
+21. Multiple points, cone points, cut points 45
+xii CONTENTS
+22. Potential theory of Brownian motion in R¢ (d > 3) 46
+23. Brownian motion and physical diffusion 51
+4. GAUSSIAN PROCESSES AND LEVY PROCESSES 55
+Gaussian processes
+24. Existence results for Gaussian processes 55
+25. Continuity results 59
+26. Isotropic random flows 66
+27. Dynkin’s lsomorphism Theorem 7
+Lévy processes
+28. Lévy processes 73
+29. Fluctuation theory and Wiener-Hopf factorisation 80
+30. Local time of Lévy processes 82
+CHAPTER II. SOME CLASSICAL THEORY
+1. BASIC MEASURE THEORY 85
+Measurability and measure
+1. Measurable spaces; o-algebras; n-systems; d-systems 85
+2. Measurable functions 88
+« 3. Monotone-Class Theorems 90
+4. Measures; the uniqueness lemma; almost everywhere; a.e.(u, 2) 91
+5. Carathéodory’s Extension Theorem 93
+6. Inner and outer u-measures; completion 94
+Integration
+7. Definition of the integral { f dy 95
+8. Convergence theorems 96
+9. The Radon-Nikodym Theorem; absolute continuity;
+4 p notation; equivalent measures 98
+10. Inequalities; Y? and L? spaces (p > 1) 99
+Product structures
+11. Product o-algebras 101
+12. Product measure; Fubini’s Theorem 102
+13. Exercises 104
+2. BASIC PROBABILITY THEORY 108
+Probability and expectation
+14. Probability triple; almost surely (a.s.); a.s.(P), a.s.(P, F) 108
+CONTENTS xiii
+15. limsup E,; First Borel-Cantelli Lemma 109
+16. Law of random variable; distribution function; joint law 110
+17. Expectation; E(X; F) 110
+18. Inequalities: Markov, Jensen, Schwarz, Tchebychev it
+19. Modes of convergence of random variables 113
+Uniform integrability and £' convergence
+20. Uniform integrability 114
+21. &!' convergence 115
+Independence
+22. Independence of o-algebras and of random variables 116
+23. Existence of families of independent variables 118
+24. Exercises 119
+3. STOCHASTIC PROCESSES 119
+The Daniell-Kolmogorov Theorem
+25. (E™,&");, o-algebras on function space; cylinders and o-cylinders 119
+26. Infinite products of probability triples 121
+27. Stochastic process; sample function; law 12t
+28. Canonical process 122
+29. Finite-dimensional distributions; sufficiency; compatibility 123
+30. The Daniell-Kolmogorov (DK) Theorem: ‘compact
+metrizable’ case 124
+31. The Daniell-Kolmogorov (DK) Theorem: general case 126
+32. Gaussian processes; pre-Brownian motion 127
+33. Pre-Poisson set functions 128
+Beyond the DK Theorem
+34, Limitations of the DK Theorem 128
+35. The role of outer measures 129
+36. Modifications; indistinguishability 130
+37. Direct construction of Poisson measures and subordinators,
+and of local time from the zero set; Azéma’s martingale 131
+38. Exercises 136
+4. DISCRETE-PARAMETER MARTINGALE THEORY 137
+Conditional expectation
+30. Fundamental theorem and definition 137
+40. Notation; agreement with elementary usage 138
+41. Properties of conditional expectation: a list 139
+42. The role of versions; regular conditional probabilities and pdfs 140
+xiv CONTENTS
+
+43. A counterexample 141
+44. A uniform-integrability property of conditional expectations 142
+
+(Discrete-parameter ) martingales and supermartingales
+45. Filtration; filtered space; adapted process; natural filtration 143
+46. Martingale; supermartingale; submartingale 144
+47. Previsible process; gambling strategy; a fundamental principle 144
+48. Doob’s Upcrossing Lemma 145
+49. Doob’s Supermartingale-Convergence Theorem 146
+50. £!' convergence and the UI property 147
+51. The Lévy-Doob Downward Theorem 148
+52. Doob’s Submartingale and ¥? Inequalities 150
+53. Martingales in ¥?; orthogonality of increments 152
+54. Doob decomposition 153
+55. The <M) and [M] processes 154
+
+Stopping times, optional stopping and optional sampling
+56. Stopping time 155
+57. Optional-stopping theorems 156
+58. The pre-T o-algebra 158
+59. Optional sampling 159
+60. Exercises 161
+
+5. CONTINUOUS-PARAMETER SUPERMARTINGALES 163
+
+Regularisation: R-supermartingales
+61. Orientation 163
+62. Some real-variable results 163
+63. Filtrations; supermartingales; R-processes, R-supermartingales 166
+64. Some important examples 167
+65. Doob’s Regularity Theorem: Part t 169
+66. Partial augmentation 171
+67. Usual conditions; R-filtered space; usual augmentation;
+
+R-regularisation 172
+68. A necessary pause for thought 174
+69. Convergence theorems for R-supermartingales 175
+70. Inequalities and Y? convergence for R-submartingales 177
+71. Martingale proof of Wiener’s Theorem; canonical
+
+Brownian motion 178
+72. Brownian motion relative to a filtered space 180
+
+Stopping times
+73. Stopping time T; pre-T o-algebra Y,; progressive process 181
+74. First-entrance (début) times; hitting times; first-approach times:
+
+the easy cases 183
+CONTENTS Xv
+75. Why ‘completion’ in the usual conditions has to be introduced 184
+76. Début and Section Theorems 186
+77. Optional Sampling for R-supermartingales under the
+usual conditions 188
+78. Two important results for Markov-process theory 191
+79. Exercises 192
+6. PROBABILITY MEASURES ON LUSIN SPACES 200
+‘Weak convergence’
+80. C(J) and Pr(J) when J is compact Hausdorff 202
+81. C(J) and Pr(J) when J is compact metrizable 203
+82. Polish and Lusin spaces 205
+83. The C,(S) topology of Pr(S) when S is a Lusin space;
+Prohorov’s Theorem 207
+84. Some useful convergence results 211
+85. Tightness in Pr(W) when W is the path-space W:= C((0, 00); IR) 213
+86. The Skorokhod representation of C;(S) convergence on Pr(S) 215
+87. Weak convergence versus convergence of finite-dimensional
+distributions 216
+Regular conditional probabilities
+88. Some preliminaries 217
+89. The main existence theorem 218
+90. Canonical Brownian Motion CBM(R”); Markov property of
+P* laws 220
+91. Exercises 222
+CHAPTER III. MARKOV PROCESSES
+1. TRANSITION FUNCTIONS AND RESOLVENTS 227
+1. What is a (continuous-time) Markov process? 227
+2. The finite-state-space Markov chain 228
+3. Transition functions and their resolvents 231
+4. Contraction semigroups on Banach spaces 234
+5. The Hille-Yosida Theorem 237
+2. FELLER-DYNKIN PROCESSES 240
+6. Feller-Dynkin (FD) semigroups 240
+7, The existence theorem: canonical FD processes 243
+8. Strong Markov property: preliminary version 247
+9. Strong Markov property: full version; Blumenthal’s 0-1 Law 249
+xvi CONTENTS
+10. Some fundamental martingales; Dynkin’s formula 252
+11. Quasi-left-continuity 255
+12. Characteristic operator 256
+13. Feller~Dynkin diffusions 258
+14. Characterisation of continuous real Lévy processes 261
+15. Consolidation 262
+3. ADDITIVE FUNCTIONALS 263
+16. PCHAFs; 4-excessive functions; Brownian local time 263
+17. Proof of the Volkonskii-Sur-Meyer Theorem 267
+18. Killing 269
+19. The Feynmann-Kac formula 272
+20. A Ciesielski-Taylor Theorem 275
+21. Time-substitution 277
+22. Reflecting Brownian motion 278
+23. The Feller-McKean chain 281
+24, Elastic Brownian motion; the arcsine law 282
+4. APPROACH TO RAY PROCESSES:
+THE MARTIN BOUNDARY 284
+25. Ray processes and Markov chains 284
+26. Important example: birth process 286
+27. Excessive functions, the Martin kernel and Choquet theory 288
+28. The Martin compactification 292
+29. The Martin representation; Doob-Hunt explanation 295
+30. R.S. Martin’s boundary 297
+31. Doob-Hunt theory for Brownian motion 298
+32. Ray processes and right processes 302
+5. RAY PROCESSES 303
+33. Orientation 303
+34. Ray resolvents 304
+35. The Ray~Knight compactification 306
+Ray’s Theorem: analytical part
+36. From semigroup to resolvent 309
+37. Branch-points 313
+38. Choquet representation of 1-excessive probability measures 315
+Ray’s Theorem: probabilistic part
+39. The Ray process associated with a given entrance law 316
+40. Strong Markov property of Ray processes 318
+41. The role of branch-points 319
+CONTENTS xvii
+6. APPLICATIONS 321
+Martin boundary theory in retrospect
+42. From discrete to continuous time 321
+43. Proof of the Doob- Hunt Convergence Theorem 323
+44. The Choquet representation of M]-excessive functions 325
+45. Doob h-transforms 327
+Time reversal and related topics
+46. Nagasawa’s formula for chains 328
+47. Strong Markov property under time reversal 330
+48. Equilibrium charge 331
+49. BM(R) and BES (3): splitting times 332
+A first look at Markov-chain theory
+50. Chains as Ray processes 334
+51. Significance of q; 337
+52. Taboo probabilities; first-entrance decomposition 337
+53. The Q-matrix; DK conditions 339
+54. Local-character condition for Q 340
+55. Totally instantaneous Q-matrices 342
+56. Last exits 343
+57. Excursions from bh 345
+58. Kingman’s solution of the ‘Markov characterization problem’ 347
+59. Symmetrisable chains 348
+60. An open problem 349
+References for Volumes | and 2 351
+Index to Volumes | and 2 375
