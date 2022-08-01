@@ -14,7 +14,7 @@
 
 ## About
 
-This repository provides a python script that read a pdf or zip files and output a text file by using tesseract OCR engine. Think of this as a script that will allow you to do run the commands like the following
+This repository provides a python script that read a pdf or zip files and output a text file by using tesseract OCR engine. Think of this as a script that will allow you to do run the commands like
 
 ```bash
 tesseract your_file.zip output_dir -l eng --psm 6
@@ -25,18 +25,20 @@ tesseract your_directory_having_image_files output_dir -l ita --psm 8
 # none of which tesseract does.
 ```
 
-Some extra work is required to actually run these commands though. Note that this repository only provides scripts not a tool that extends official tesseract CLI.
+Some extra work is required to actually run these commands though. Note that this repository only provides scripts not a tool that extends the official tesseract CLI.
 ## OCR sample
 
-Input and output OCR-samples are available at [sample](/sample/) and [out](/out/) directory. They are ToC of a Book since this repository is originally for OCR ToC of a book.
+Input and output OCR samples are available at [sample](/sample/) and [out](/out/) directory. They are ToC of a Book since this repository is originally for OCR the ToC of a book.
 
-For typical examles, see the following list.
+For typical examples, see the following.
 
-- two of OCR samples 
+- Three OCR samples
     - input [ToC of Conway's book](/sample/FA/)
-        - [its output - a good case](/out/FA.txt)
+        - [its output](/out/FA.txt)
+    - input [ToC of karatzas shreve book](/sample/BMSC.pdf)
+        - [its output](/out/BMSC.txt)
     - input [ToC of Hungerford's book](/sample/Algebra/)
-        - [its output - a bad case](/out/Algebra.txt)
+        - [its output](/out/Algebra.txt)
 
 ## Environment
 
