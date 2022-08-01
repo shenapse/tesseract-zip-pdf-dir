@@ -28,17 +28,17 @@ tesseract your_directory_having_image_files output_dir -l ita --psm 8
 Some extra work is required to actually run these commands though. Note that this repository only provides scripts not a tool that extends the official tesseract CLI.
 ## OCR sample
 
-Input and output OCR samples are available at [sample](/sample/) and [out](/out/) directory. They are ToC of a Book since this repository is originally for OCR the ToC of a book.
+Input and output OCR samples are available at [sample](/sample/) and [out](/out/) directory. They are ToCs of books since this repository is originally for OCR ToCs.
 
 For typical examples, see the following.
 
 - Three OCR samples
     - input [ToC of Conway's book](/sample/FA/)
-        - [its output](/out/FA.txt)
+        - [output](/out/FA.txt)
     - input [ToC of Karatzas and Shreve's book](/sample/BMSC.pdf)
-        - [its output](/out/BMSC.txt)
+        - [output](/out/BMSC.txt)
     - input [ToC of Hungerford's book](/sample/Algebra/)
-        - [its output](/out/Algebra.txt)
+        - [output](/out/Algebra.txt)
 
 ## Environment
 
@@ -60,7 +60,7 @@ Enable python 3.10.5 at the top of the project directory. Here we do it by pyenv
 pyenv local 3.10.5
 ```
 
-If you have not downloaded python 3.10.5, run the following and try the previous command again.
+It fails if you have not downloaded python 3.10.5. Run the following and try the previous command again.
 
 ```bash
 pyenv install 3.10.5
