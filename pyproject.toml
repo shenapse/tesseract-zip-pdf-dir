@@ -6,7 +6,6 @@ authors = ["shena<https://github.com/Shena4746/ocr-toc-python>"]
 
 [tool.poetry.dependencies]
 python = "3.10.5"
-numpy = "^1.23.1"
 opencv-python = "^4.6.0"
 pdf2image = "^1.16.0"
 PyPDF2 = "^2.7.0"

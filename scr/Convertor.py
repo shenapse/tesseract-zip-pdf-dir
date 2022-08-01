@@ -11,9 +11,6 @@ from PIL import Image
 from File import File
 from Type_Alias import Path, PIL_Img, PIL_Imgs
 
-# from itertools import chain
-# import img2pdf
-
 
 class IConvertor(metaclass=abc.ABCMeta):
     """Interface for File class"""

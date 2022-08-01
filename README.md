@@ -77,7 +77,7 @@ poetry install
 
 ### Overview
 
-All you need to know is how to use the function `ocr_by_cloud_vision_api(ocr=, file_or_dir=)` in `scr/main.py`, which is a main interface for the function this repository provides. It OCRs input file(s) and saves the read text as a text file in the optionally specified directory.
+All you need to know is how to use the function `ocr_by_cloud_vision_api(ocr=, file_or_dir=)` in `scr/main.py`, which is the main interface for the function this repository provides. It OCRs input file(s) and saves the read text as a text file in the optionally specified directory.
 
 ### Doc for the main function
 
@@ -118,7 +118,7 @@ if __name__ == "__main__":
     dir = "sample/Algebra" # ['001.jpg', '002.jpg', '003.jpg']
     dir_out: Path = Path("out")
     name_out:str = Path(dir).name # Algebra
-    ocr = OCR(lang="eng", layout=6)
+    ocr = OCR()
     ocr_by_tesseract(ocr, file_or_dir=file, dir_out=dir_out,ext="jpg", name_out=name_out)
 
     # get ./out/Algebra.txt
@@ -130,7 +130,7 @@ You can't read zip or pdf files in a directory.
 if __name__ == "__main__":
     # trying to read pdfs by specifying directory causes an error
     dir = "./sample"
-    ocr = OCR(lang="eng", layout=6)
+    ocr = OCR()
     ocr_by_tesseract(ocr, file_or_dir=file, ext="pdf")
 
     # ValueError: Can't read non-image files by specifying directory.
