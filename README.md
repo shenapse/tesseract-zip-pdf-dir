@@ -1,6 +1,6 @@
-# Let tesseract OCR zip, pdf and files in a directory
+# A tool to let tesseract read zip, pdf and files in a directory
 
-- [Let tesseract OCR zip, pdf and files in a directory](#let-tesseract-ocr-zip-pdf-and-files-in-a-directory)
+- [A tool to let tesseract read zip, pdf and files in a directory](#a-tool-to-let-tesseract-read-zip-pdf-and-files-in-a-directory)
     - [About](#about)
     - [OCR sample](#ocr-sample)
     - [Environment](#environment)
@@ -14,7 +14,7 @@
 
 ## About
 
-This repository provides a python script that read a pdf or zip files and output a text file by using tesseract OCR engine. Think of this as a script that will allow you to do run the commands like
+This repository provides a python script that read a pdf or a zip file and output a text file using tesseract OCR engine. You can think of it as a script that runs commands like
 
 ```bash
 tesseract your_file.zip output_dir -l eng --psm 6
@@ -26,6 +26,7 @@ tesseract your_directory_having_image_files output_dir -l ita --psm 8
 ```
 
 Some extra work is required to actually run these commands though. Note that this repository only provides scripts not a tool that extends the official tesseract CLI.
+
 ## OCR sample
 
 Input and output OCR samples are available at [sample](/sample/) and [out](/out/) directory. They are ToCs of books since this repository is originally for OCR ToCs.
@@ -33,12 +34,12 @@ Input and output OCR samples are available at [sample](/sample/) and [out](/out/
 For typical examples, see the following.
 
 - Three OCR samples
-    - input [ToC of Conway's book](/sample/FA/)
-        - [output](/out/FA.txt)
-    - input [ToC of Karatzas and Shreve's book](/sample/BMSC.pdf)
-        - [output](/out/BMSC.txt)
-    - input [ToC of Hungerford's book](/sample/Algebra/)
-        - [output](/out/Algebra.txt)
+  - input [ToC of Conway's book](/sample/FA/)
+    - [output](/out/FA.txt)
+  - input [ToC of Karatzas and Shreve's book](/sample/BMSC.pdf)
+    - [output](/out/BMSC.txt)
+  - input [ToC of Hungerford's book](/sample/Algebra/)
+    - [output](/out/Algebra.txt)
 
 ## Environment
 
@@ -82,15 +83,15 @@ All you need to know is how to use the function `ocr_by_cloud_vision_api(ocr=, f
 ### Doc for the main function
 
 - Args of `ocr_by_cloud_vision_api()`
-    - `ocr:OCR` : Required. An OCR class object that holds a pyocr.tool and options for the tesseract engine.
+  - `ocr:OCR` : Required. An OCR class object that holds a pyocr.tool and options for the tesseract engine.
   - `file_or_dir: Path | str` : Required. The path to a file or a directory.
   - `ext: str` : Optional. The default is `"zip"`. The intended file extension. Used only when `file_or_dir` argument receives a directory path, and is ignored in the other case.
   - `dir_out: Path | None` : Optional. The default uses the same directory as `file_or_dir` argument. The output directory for the text file.
   - `name_out: str | None` : Optional. The name of output text file without extension part ".txt". The default uses the first file name of input files.
 
 - `file_or_dir` accepts a path to
-    - a file whose format is a png or jpeg, or zip (of jpeg or png) or pdf
-    - a direcotry that has jpeg or png files
+  - a file whose format is a png or jpeg, or zip (of jpeg or png) or pdf
+  - a direcotry that has jpeg or png files
 
 ### Sample Code
 
