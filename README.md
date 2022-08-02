@@ -25,7 +25,7 @@ tesseract your_directory_having_image_files output_dir -l ita --psm 8
 # none of which tesseract does.
 ```
 
-Some extra work beyond is required in order to actually run these commands though. Note that this repository only provides scripts not a tool that extends the official tesseract CLI.
+Some extra work is required in order to actually run these commands though. Note that this repository only provides scripts not a tool that extends the official tesseract CLI.
 
 ## Sample
 
