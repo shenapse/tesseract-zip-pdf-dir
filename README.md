@@ -1,6 +1,6 @@
-# python scripts to let tesseract read zip, pdf and files in a directory
+# Python scripts to read pdf or zip file and OCR them with tesseract
 
-- [python scripts to let tesseract read zip, pdf and files in a directory](#python-scripts-to-let-tesseract-read-zip-pdf-and-files-in-a-directory)
+- [Python scripts to read pdf or zip file and OCR them with tesseract](#python-scripts-to-read-pdf-or-zip-file-and-ocr-them-with-tesseract)
     - [About](#about)
     - [Sample](#sample)
     - [Environment](#environment)
