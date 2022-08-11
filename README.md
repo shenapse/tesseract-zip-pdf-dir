@@ -14,7 +14,7 @@
 
 ## About
 
-This repository provides python scripts that read a pdf or a zip file and output a text file using tesseract OCR engine. You might think of it as running a command like
+This repository provides python scripts that read a pdf/zip file and output a text file using tesseract OCR engine. You might think of it as running a command like
 
 ```bash
 tesseract your_file.zip output_dir -l eng --psm 6
