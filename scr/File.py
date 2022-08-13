@@ -96,7 +96,7 @@ class File:
                 print(f"{zp.name} contains: {zf.namelist()}")
         else:
             files = [] if self.is_empty() else self.get_paths_with_pages(True)
-            pprint(f"file with pages:{files}")
+            pprint(f"file with pages:\n{files}")
         # print(f"named temporary? {self.is_temp}")
 
     def __get_ext(self, file_path: Path) -> str:

@@ -3,33 +3,31 @@
 - [Python scripts to read pdf and zip file and OCR them with tesseract](#python-scripts-to-read-pdf-and-zip-file-and-ocr-them-with-tesseract)
     - [About](#about)
     - [Sample](#sample)
-    - [Environment](#environment)
+    - [Install](#install)
     - [Usage](#usage)
-        - [Overview](#overview)
-        - [Doc for the main function](#doc-for-the-main-function)
-        - [Sample Code](#sample-code)
-            - [Read zip or pdf file](#read-zip-or-pdf-file)
-            - [Read png (or jpeg) files in a directory](#read-png-or-jpeg-files-in-a-directory)
-            - [Preview files](#preview-files)
+        - [Read zip or pdf file](#read-zip-or-pdf-file)
+        - [Read png (or jpg) files in a directory](#read-png-or-jpg-files-in-a-directory)
+        - [Preview files](#preview-files)
 
 ## About
 
-This repository provides python scripts that read a pdf/zip file and output a text file using tesseract OCR engine. You might think of it as running a command like
+A command line tool written in python that reads a pdf/zip file and outputs a text file using tesseract OCR engine. Given an appropriate alias you can run
 
 ```bash
-tesseract your_file.zip output_dir -l eng --psm 6
-# or 
-tesseract your_file.pdf output_dir -l fra --psm 7
-# or 
-tesseract your_directory_having_image_files output_dir -l ita --psm 8
-# none of which tesseract does.
-```
+# tesseractz is an alias for '/abs-path/to/.venv/python3 /abs-path/to/tesseract-zpf.py'
+tesseractz pngs.zip --dirout dir_out --lang eng --psm 6
+# save pngs.txt
 
-Some extra work is required in order to actually run these commands though. Note that this repository only provides scripts not a tool that extends the official tesseract CLI.
+tesseractz your_file.pdf -d dir_out -l fra --p 7
+# save your_file.txt
+
+tesseractz your_directory_having_image_files -l ita -p 8 --name ocr.txt
+# save ocr.txt
+```
 
 ## Sample
 
-Input and output OCR samples are available at [sample](/sample/) and [out](/out/) directory. They are ToCs of books since this repository is originally for OCR ToCs.
+Input and output OCR samples are available at [sample](/sample/) and [out](/out/) directory. They are all ToCs of books since this repository is originally for OCR ToCs.
 
 For typical examples, see the following.
 
@@ -41,10 +39,11 @@ For typical examples, see the following.
   - input [ToC of Hungerford's book](/sample/Algebra/)
     - [output](/out/Algebra.txt)
 
-## Environment
+## Install
 
-- Windows 10 + WSL2 + Ubuntu 20.04
-- python 3.10.5 (pyenv 2.3.2) + poetry (1.1.11)
+- Tested Environment
+  - Windows 10 + WSL2 + Ubuntu 20.04
+  - python 3.10.5 (pyenv 2.3.2) + poetry (1.1.11)
 
 The script assumes that tesseract can be called from everywhere on your terminal.
 
@@ -74,82 +73,152 @@ python3 -m venv .venv
 poetry install
 ```
 
+To see if the installation has successfully completed, run the following.
+
+```bash
+poetry run python3 ./scr/main.py --help
+
+# Usage: tesseract-zpd.py [OPTIONS] COMMAND [ARGS]...
+
+# Options:
+#   --help  Show this message and exit.
+
+# Commands:
+#   ocr      ocr file(s in a directory) and save the result in a text file.
+#   preview  preview files that will be read by ocr.
+```
+
 ## Usage
 
-### Overview
+There are two sub-commands for `python tesseract-zpf.py`: `preview` and `ocr`.
+Help for each is available via
 
-All you need to know is how to use the function `ocr_by_cloud_vision_api(ocr=, file_or_dir=)` in `scr/main.py`, which is the main interface for the function this repository provides. It OCRs input file(s) and saves the read text as a text file in the optionally specified directory.
+```bash
+# help for preview
+poetry run python3 ./scr/main.py preview --help
 
-### Doc for the main function
+# help for ocr
+poetry run python3 ./scr/main.py ocr --help
 
-- Args of `ocr_by_cloud_vision_api()`
-  - `ocr:OCR` : Required. An OCR class object that holds a setting and options for the tesseract OCR engine.
-  - `file_or_dir: Path | str` : Required. The path to a file or a directory.
-  - `ext: str` : Optional. The default is `"zip"`. The intended file extension. Used only when `file_or_dir` argument receives a directory path, and is ignored in the other case.
-  - `dir_out: Path | None` : Optional. The default uses the same directory as `file_or_dir` argument. The output directory for the text file.
-  - `name_out: str | None` : Optional. The name of output text file without extension part ".txt". The default uses the first file name of input files.
+# Usage: tesseract-zpd.py ocr [OPTIONS] PATH
+#   ocr file(s in a directory) and save the result in a text file.
+#   The first argument must be a path.
 
-- `file_or_dir` accepts a path to
-  - a file whose format is a png or jpeg, or zip (of jpeg or png) or pdf
-  - a direcotry that has jpeg or png files
-
-### Sample Code
-
-#### Read zip or pdf file
-
-```python
-if __name__ == "__main__":
-    # for zip file
-    file = "sample/DMPM.zip" # or "sample/SDT.pdf" 
-    dir_out: Path = Path("out")
-    # specify options for tesseract.
-    # OCR class automatically finds your installed tesseract engine
-    # The below is the default value for lang and psm.
-    ocr = OCR(lang="eng", layout=6)
-    ocr_by_tesseract(ocr, file_or_dir=file, dir_out=dir_out)
-
-    # get ./out/DMPM.txt
+# Options:
+#   -e, --ext TEXT           file extension without period mark'.'. the default
+#                            uses 'png'
+#   -l, --lang TEXT          language. the default uses 'eng'=English.
+#   -p, --psm INTEGER RANGE  page segmentation mode. default used 6.  [3<=x<=13]
+#   -d, --dirout DIRECTORY   path of the output directory.  the default uses the same directory input as the argument.
+#   -n, --name TEXT          file name of the output file. accepts both formats
+#                            'name_out.txt' and 'name_out'. the default uses the file name if input is single zip or pdf, and the
+#                            name of the first file (like 005.png -> 005.txt) in
+#                            the directory if image files are provided.
+#   -a, --auto               whether to name output text file after its parent
+#                            directory. Used only when directory path is
+#                            provided and name option is not explicitly
+#                            provided.
+#   --help                   Show this message and exit.
 ```
 
-#### Read png (or jpeg) files in a directory
+If you would like a handy tool that can be called from everywhere, set, for instance, an appropriate alias in ~/.bashrc like
 
-In this case, it is recommended to specify `name_out` argument in order to avoid overwriting an old output file since otherwise the output file is named as "001.txt".
-
-```python
-if __name__ == "__main__":
-    # for all jpg files in sample/Algebra directory
-    dir = "sample/Algebra" # ['001.jpg', '002.jpg', '003.jpg']
-    dir_out: Path = Path("out")
-    name_out:str = Path(dir).name # Algebra
-    ocr = OCR()
-    ocr_by_tesseract(ocr, file_or_dir=file, dir_out=dir_out,ext="jpg", name_out=name_out)
-
-    # get ./out/Algebra.txt
+```
+alias tesseractz='/abs-path/to/.venv/python3 /abs-path/to/tesseract-zpf.py'
 ```
 
-You can't read zip or pdf files in a directory.
+Then the above sample code is reduced to
 
-```python
-if __name__ == "__main__":
-    # trying to read pdfs by specifying directory causes an error
-    dir = "./sample"
-    ocr = OCR()
-    ocr_by_tesseract(ocr, file_or_dir=file, ext="pdf")
-
-    # ValueError: Can't read non-image files by specifying directory.
-    # dir=/absolute/path/sample
-    # ext=pdf
+```bash
+tesseractz --help
 ```
 
-#### Preview files
+For simplicity, we assume that the just mentioned alias is set.
 
-```python
-# preview files to read
-file = "./sample/DMPM.zip"
-preview_files(file_or_dir=file)
+### Read zip or pdf file
 
-# 'root:/absolute/path/sample'
-# 'extension:zip'
-# DMPM.zip contains: ['DMPM-1.png', 'DMPM-2.png', 'DMPM-3.png', 'DMPM-4.png', 'DMPM-5.png', 'DMPM-6.png', 'DMPM-7.png']
-# named temporary? False
+In order to OCR a zip file binding png (or jpg) files, use the `ocr` sub-command
+
+```bash
+tesseractz ocr /path/to/your-file/pngs.zip
+```
+
+The following example is for reading a zip file with ocr option psm=7 and save the resulting text file at ./out directory with its file name 'first-ocr.txt'.
+
+```bash
+tesseractz ocr /path/to/your-file/pngs.zip -p 7 -d ./out -n first-ocr
+# save as first-ocr.txt
+```
+
+Analogous codes work for reading a pdf file.
+
+### Read png (or jpg) files in a directory
+
+In order to read jpg files in the following directory
+
+```txt
+./sample/Algebra/
+├── 001.jpg
+├── 002.jpg
+├── 003.jpg
+├── uninteresting.png
+```
+
+just run
+
+```bash
+tesseractz ocr ./sample/Algebra/ -e jpg
+# save 001.txt
+```
+
+In this case, it is recommended to specify the name for the output text file since otherwise it becomes "001.txt", which is named after the first file name in the directory.
+
+Use `-n` or `--name` option to explicitly provide a name:
+
+```bash
+tesseractz ocr ./sample/Algebra/ -e jpg -n ocr-jpgs
+# save as 'ocr-jpgs.txt'
+```
+
+Or enable `-a` or `--auto` option to name it after its parent directory name instead:
+
+```bash
+tesseractz ocr ./sample/Algebra/ -e jpg -a
+# save as 'Algebra.txt'
+```
+
+### Preview files
+
+```txt
+./sample/Algebra/
+├── 001.jpg
+├── 002.jpg
+├── 003.jpg
+├── uninteresting.png
+```
+
+`preview` sub-command shows you files it is looking at.
+
+```bash
+tesseractz preview ./sample/Algebra/ -e jpg
+# 'root:/abs-path/to/Algebra'
+# 'extension:jpg'
+# ('file with pages:\n'
+#  "[(PosixPath('/abs-path/to/Algebra/001.jpg'), "
+#  '1), '
+#  "(PosixPath('/abs-path/to/Algebra/002.jpg'), "
+#  '1), '
+#  "(PosixPath('/abs-path/to/Algebra/003.jpg'), "
+#  '1)]')
+```
+
+If you abbreviate `-e` option, then it refers png files by default.
+
+```bash
+tesseractz preview ./sample/Algebra/
+# 'root:/abs-path/to/Algebra'
+# 'extension:png'
+# ('file with pages:\n'
+#  "[(PosixPath('/abs-path/to/Algebra/uninteresting.png'), "
+#  '1)]')
 ```
