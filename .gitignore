@@ -9,5 +9,7 @@
 !/scr/Type_Alias.py
 !/scr/main.py
 !/scr/OCR_by_tesseract.py
+!/scr/doc-main.md
+!/scr/tesseract-zpd.py
 !/scr/pdf/
 !/scr/out/
