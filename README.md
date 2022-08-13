@@ -14,7 +14,7 @@
 A command line tool written in python that reads a pdf/zip file and outputs a text file using tesseract OCR engine. Given an appropriate alias you can run
 
 ```bash
-# tesseractz is an alias for '/abs-path/to/.venv/python3 /abs-path/to/tesseract-zpf.py'
+# tesseractz is an alias for '/abs-path/to/.venv/python3 /abs-path/to/tesseract-zpd.py'
 tesseractz pngs.zip --dirout dir_out --lang eng --psm 6
 # save pngs.txt
 
