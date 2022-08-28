@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Literal, Optional
 
 from Convertor import Convertor
 from File import File
@@ -78,6 +78,18 @@ def ocr_by_tesseract(
         msg = f"Error occurred while trying to save ocr text {text_path}"
         raise Exception(msg)
     return text_path, success
+
+
+def ocr_all(ocr: OCR, dir: Path | str, ext: Literal["zip", "pdf"] = "zip", dir_out: Optional[Path] = None) -> None:
+    dir_path: Path = Path(dir)
+    if not dir_path.is_dir():
+        raise TypeError(f"{dir} is not a directory.")
+    if ext not in (ext_ok := ["zip", "pdf"]):
+        raise ValueError(f"{ext} is not allowed. use {ext_ok}.")
+    for file in dir_path.glob(f"*.{ext}"):
+        path, success = ocr_by_tesseract(ocr=ocr, file_or_dir=file, ext=ext, dir_out=dir_out)
+        if not success:
+            print(f"{path} failed to save.")
 
 
 def save_text(

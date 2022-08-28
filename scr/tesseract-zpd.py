@@ -1,6 +1,6 @@
 import click
 
-from main import ocr_by_tesseract, preview_files
+from main import ocr_all, ocr_by_tesseract, preview_files
 from OCR_by_tesseract import OCR
 from Type_Alias import Path
 
@@ -16,7 +16,11 @@ def cli():
 @cli.command(help="preview files that will be read by ocr. The first argument must be a path.")
 @click.argument("path", nargs=1, type=click.Path(exists=True))
 @click.option(
-    "-e", "--ext", type=str, default="png", help="file extension without period mark'.'. the default uses 'png'."
+    "-e",
+    "--ext",
+    type=click.Choice(["zip", "pdf", "png", "jpeg", "jpg"]),
+    default="png",
+    help="file extension without period mark'.'. the default uses 'png'.",
 )
 def preview(path: str, ext: str):
     preview_files(path, ext)
@@ -56,12 +60,23 @@ def preview(path: str, ext: str):
     is_flag=True,
     help="whether to name output text file after its parent directory. Used only when directory path is provided and name option is not explicitly provided.",
 )
-def ocr(path: str, ext: str, lang: str, psm: int, dir_out: str | None, name: str | None, auto: bool):
+def ocr(
+    path: str | Path,
+    ext: str,
+    lang: str,
+    psm: int,
+    dir_out: str | None,
+    name: str | None,
+    auto: bool,
+):
     ocr = OCR(lang=lang, layout=psm)
     dir_out_new: Path | None = Path(dir_out) if dir_out is not None else None
-    path_in = Path(path)
-    name_new: str | None = path_in.stem if auto and name is None and path_in.is_dir() else name
-    ocr_by_tesseract(ocr=ocr, file_or_dir=path, ext=ext, dir_out=dir_out_new, name_out=name_new)
+    path = Path(path)
+    if path.is_dir() and (ext == "zip" or ext == "pdf"):
+        ocr_all(ocr=ocr, dir=path, ext=ext, dir_out=dir_out_new)
+    else:
+        name_new: str | None = path.stem if auto and name is None and path.is_dir() else name
+        ocr_by_tesseract(ocr=ocr, file_or_dir=path, ext=ext, dir_out=dir_out_new, name_out=name_new)
 
 
 if __name__ == "__main__":
